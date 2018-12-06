@@ -6,7 +6,7 @@
 #
 Name     : kfind
 Version  : 18.08.0
-Release  : 3
+Release  : 4
 URL      : https://download.kde.org/stable/applications/18.08.0/src/kfind-18.08.0.tar.xz
 Source0  : https://download.kde.org/stable/applications/18.08.0/src/kfind-18.08.0.tar.xz
 Source99 : https://download.kde.org/stable/applications/18.08.0/src/kfind-18.08.0.tar.xz.sig
