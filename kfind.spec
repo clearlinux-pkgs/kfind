@@ -5,22 +5,23 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kfind
-Version  : 18.08.0
-Release  : 4
-URL      : https://download.kde.org/stable/applications/18.08.0/src/kfind-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/kfind-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/kfind-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 5
+URL      : https://download.kde.org/stable/applications/18.12.2/src/kfind-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/kfind-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/kfind-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GFDL-1.3 GPL-2.0
-Requires: kfind-bin
-Requires: kfind-data
-Requires: kfind-license
-Requires: kfind-locales
-Requires: kfind-man
+Requires: kfind-bin = %{version}-%{release}
+Requires: kfind-data = %{version}-%{release}
+Requires: kfind-license = %{version}-%{release}
+Requires: kfind-locales = %{version}-%{release}
+Requires: kfind-man = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : kfilemetadata-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 No detailed description available
@@ -28,9 +29,9 @@ No detailed description available
 %package bin
 Summary: bin components for the kfind package.
 Group: Binaries
-Requires: kfind-data
-Requires: kfind-license
-Requires: kfind-man
+Requires: kfind-data = %{version}-%{release}
+Requires: kfind-license = %{version}-%{release}
+Requires: kfind-man = %{version}-%{release}
 
 %description bin
 bin components for the kfind package.
@@ -47,7 +48,7 @@ data components for the kfind package.
 %package doc
 Summary: doc components for the kfind package.
 Group: Documentation
-Requires: kfind-man
+Requires: kfind-man = %{version}-%{release}
 
 %description doc
 doc components for the kfind package.
@@ -78,28 +79,28 @@ man components for the kfind package.
 
 
 %prep
-%setup -q -n kfind-18.08.0
+%setup -q -n kfind-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535428609
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549866327
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535428609
+export SOURCE_DATE_EPOCH=1549866327
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kfind
-cp COPYING %{buildroot}/usr/share/doc/kfind/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/doc/kfind/COPYING.DOC
-cp src/COPYING %{buildroot}/usr/share/doc/kfind/src_COPYING
-cp src/COPYING.DOC %{buildroot}/usr/share/doc/kfind/src_COPYING.DOC
+mkdir -p %{buildroot}/usr/share/package-licenses/kfind
+cp COPYING %{buildroot}/usr/share/package-licenses/kfind/COPYING
+cp COPYING.DOC %{buildroot}/usr/share/package-licenses/kfind/COPYING.DOC
+cp src/COPYING %{buildroot}/usr/share/package-licenses/kfind/src_COPYING
+cp src/COPYING.DOC %{buildroot}/usr/share/package-licenses/kfind/src_COPYING.DOC
 pushd clr-build
 %make_install
 popd
@@ -115,11 +116,13 @@ popd
 %files data
 %defattr(-,root,root,-)
 /usr/share/applications/org.kde.kfind.desktop
+/usr/share/icons/hicolor/128x128/apps/kfind.png
 /usr/share/icons/hicolor/16x16/apps/kfind.png
 /usr/share/icons/hicolor/22x22/apps/kfind.png
 /usr/share/icons/hicolor/32x32/apps/kfind.png
 /usr/share/icons/hicolor/48x48/apps/kfind.png
 /usr/share/icons/hicolor/64x64/apps/kfind.png
+/usr/share/icons/hicolor/scalable/apps/kfind.svgz
 /usr/share/metainfo/org.kde.kfind.appdata.xml
 /usr/share/xdg/kfind.categories
 
@@ -159,14 +162,14 @@ popd
 /usr/share/doc/HTML/uk/kfind/index.docbook
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kfind/COPYING
-/usr/share/doc/kfind/COPYING.DOC
-/usr/share/doc/kfind/src_COPYING
-/usr/share/doc/kfind/src_COPYING.DOC
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kfind/COPYING
+/usr/share/package-licenses/kfind/COPYING.DOC
+/usr/share/package-licenses/kfind/src_COPYING
+/usr/share/package-licenses/kfind/src_COPYING.DOC
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/ca/man1/kfind.1
 /usr/share/man/de/man1/kfind.1
 /usr/share/man/es/man1/kfind.1
