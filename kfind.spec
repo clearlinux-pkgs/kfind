@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kfind
-Version  : 18.12.2
-Release  : 6
-URL      : https://download.kde.org/stable/applications/18.12.2/src/kfind-18.12.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.12.2/src/kfind-18.12.2.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.12.2/src/kfind-18.12.2.tar.xz.sig
+Version  : 18.12.3
+Release  : 7
+URL      : https://download.kde.org/stable/applications/18.12.3/src/kfind-18.12.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.3/src/kfind-18.12.3.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.3/src/kfind-18.12.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GFDL-1.3 GPL-2.0
@@ -31,7 +31,6 @@ Summary: bin components for the kfind package.
 Group: Binaries
 Requires: kfind-data = %{version}-%{release}
 Requires: kfind-license = %{version}-%{release}
-Requires: kfind-man = %{version}-%{release}
 
 %description bin
 bin components for the kfind package.
@@ -79,22 +78,23 @@ man components for the kfind package.
 
 
 %prep
-%setup -q -n kfind-18.12.2
+%setup -q -n kfind-18.12.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549884482
+export SOURCE_DATE_EPOCH=1551997175
 mkdir -p clr-build
 pushd clr-build
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549884482
+export SOURCE_DATE_EPOCH=1551997175
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kfind
 cp COPYING %{buildroot}/usr/share/package-licenses/kfind/COPYING
