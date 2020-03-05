@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kfind
-Version  : 19.12.2
-Release  : 20
-URL      : https://download.kde.org/stable/release-service/19.12.2/src/kfind-19.12.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/19.12.2/src/kfind-19.12.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/19.12.2/src/kfind-19.12.2.tar.xz.sig
+Version  : 19.12.3
+Release  : 21
+URL      : https://download.kde.org/stable/release-service/19.12.3/src/kfind-19.12.3.tar.xz
+Source0  : https://download.kde.org/stable/release-service/19.12.3/src/kfind-19.12.3.tar.xz
+Source1  : https://download.kde.org/stable/release-service/19.12.3/src/kfind-19.12.3.tar.xz.sig
 Summary  : Find Files/Folders
 Group    : Development/Tools
 License  : GFDL-1.2 GFDL-1.3 GPL-2.0
@@ -78,15 +78,15 @@ man components for the kfind package.
 
 
 %prep
-%setup -q -n kfind-19.12.2
-cd %{_builddir}/kfind-19.12.2
+%setup -q -n kfind-19.12.3
+cd %{_builddir}/kfind-19.12.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1581020400
+export SOURCE_DATE_EPOCH=1583444136
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -103,13 +103,13 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1581020400
+export SOURCE_DATE_EPOCH=1583444136
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kfind
-cp %{_builddir}/kfind-19.12.2/COPYING %{buildroot}/usr/share/package-licenses/kfind/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/kfind-19.12.2/COPYING.DOC %{buildroot}/usr/share/package-licenses/kfind/e1d31e42d2a477d6def889000aa8ffc251f2354c
-cp %{_builddir}/kfind-19.12.2/src/COPYING %{buildroot}/usr/share/package-licenses/kfind/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/kfind-19.12.2/src/COPYING.DOC %{buildroot}/usr/share/package-licenses/kfind/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/kfind-19.12.3/COPYING %{buildroot}/usr/share/package-licenses/kfind/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kfind-19.12.3/COPYING.DOC %{buildroot}/usr/share/package-licenses/kfind/e1d31e42d2a477d6def889000aa8ffc251f2354c
+cp %{_builddir}/kfind-19.12.3/src/COPYING %{buildroot}/usr/share/package-licenses/kfind/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/kfind-19.12.3/src/COPYING.DOC %{buildroot}/usr/share/package-licenses/kfind/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
 pushd clr-build
 %make_install
 popd
