@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kfind
-Version  : 21.08.2
-Release  : 35
-URL      : https://download.kde.org/stable/release-service/21.08.2/src/kfind-21.08.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.08.2/src/kfind-21.08.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.08.2/src/kfind-21.08.2.tar.xz.sig
+Version  : 21.08.3
+Release  : 36
+URL      : https://download.kde.org/stable/release-service/21.08.3/src/kfind-21.08.3.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.08.3/src/kfind-21.08.3.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.08.3/src/kfind-21.08.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -79,15 +79,15 @@ man components for the kfind package.
 
 
 %prep
-%setup -q -n kfind-21.08.2
-cd %{_builddir}/kfind-21.08.2
+%setup -q -n kfind-21.08.3
+cd %{_builddir}/kfind-21.08.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1634411250
+export SOURCE_DATE_EPOCH=1636071377
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -103,10 +103,10 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1634411250
+export SOURCE_DATE_EPOCH=1636071377
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kfind
-cp %{_builddir}/kfind-21.08.2/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kfind/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/kfind-21.08.3/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kfind/3e8971c6c5f16674958913a94a36b1ea7a00ac46
 pushd clr-build
 %make_install
 popd
