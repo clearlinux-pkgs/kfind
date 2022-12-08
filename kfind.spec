@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kfind
-Version  : 22.08.3
-Release  : 48
-URL      : https://download.kde.org/stable/release-service/22.08.3/src/kfind-22.08.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.08.3/src/kfind-22.08.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.08.3/src/kfind-22.08.3.tar.xz.sig
+Version  : 22.12.0
+Release  : 49
+URL      : https://download.kde.org/stable/release-service/22.12.0/src/kfind-22.12.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.12.0/src/kfind-22.12.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.12.0/src/kfind-22.12.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0
@@ -80,15 +80,15 @@ man components for the kfind package.
 
 
 %prep
-%setup -q -n kfind-22.08.3
-cd %{_builddir}/kfind-22.08.3
+%setup -q -n kfind-22.12.0
+cd %{_builddir}/kfind-22.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1667884545
+export SOURCE_DATE_EPOCH=1670540236
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -104,7 +104,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1667884545
+export SOURCE_DATE_EPOCH=1670540236
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kfind
 cp %{_builddir}/kfind-%{version}/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/kfind/29fb05b49e12a380545499938c4879440bd8851e || :
@@ -164,6 +164,8 @@ popd
 /usr/share/doc/HTML/ru/kfind/index.docbook
 /usr/share/doc/HTML/sr/kfind/index.cache.bz2
 /usr/share/doc/HTML/sr/kfind/index.docbook
+/usr/share/doc/HTML/sr@latin/kfind/index.cache.bz2
+/usr/share/doc/HTML/sr@latin/kfind/index.docbook
 /usr/share/doc/HTML/sv/kfind/index.cache.bz2
 /usr/share/doc/HTML/sv/kfind/index.docbook
 /usr/share/doc/HTML/uk/kfind/index.cache.bz2
@@ -192,6 +194,7 @@ popd
 /usr/share/man/pt_BR/man1/kfind.1
 /usr/share/man/ru/man1/kfind.1
 /usr/share/man/sr/man1/kfind.1
+/usr/share/man/sr@latin/man1/kfind.1
 /usr/share/man/sv/man1/kfind.1
 /usr/share/man/uk/man1/kfind.1
 
